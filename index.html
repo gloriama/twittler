@@ -11,23 +11,26 @@
         var $body = $('body');
         $body.html('');
 
+        var showTweets = function() { //show tweets in reverse chron order
+          $tweets.text('');
+          var index;
+          for (index = 0; index < streams.home.length; index++) {
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.prependTo($tweets);
+          }
+        }
+        
         //allow user to get new tweets
         var $update = $('<button>Get new tweets</button>');
-        $update.on('click', function() {
-          alert('Clicked!');
-        });
+        $update.on('click', showTweets);
         $update.appendTo($body);
         
-        //show tweets in reverse chron order
+        //show tweets
         var $tweets = $('<section></section>');
-        var index;
-        for (index = 0; index < streams.home.length; index++) {
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.prependTo($tweets);
-        }
         $tweets.appendTo($body);
+        showTweets();
 
       });
 
