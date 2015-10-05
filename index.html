@@ -17,26 +17,32 @@
           var index;
           for (index = 0; index < streams.home.length; index++) {
             var tweet = streams.home[index];
-            var $user = $('<a id="' + tweet.user + '" href="#"></a>');
+            var $user = $('<a></a>',
+                          {"href": "#"});
             $user.text('@' + tweet.user);
             var $tweet = $('<span></span>');
             $tweet.text(tweet.message + ' (' + tweet.created_at.format("mmm d yyyy, h:MM TT") + ')');
             var $entry = $('<div></div>');
+            var $userTweets = $('<ul></ul>',
+                                {"class": "user-tweets"});
+            $userTweets.hide();
             $entry.append($user);
             $entry.append(': ');
             $entry.append($tweet);
+            $entry.append($userTweets);
             $tweets.prepend($entry);
             
             $user.on('click', function(event) {
               event.preventDefault();
-              $userTweets = $('<ul></ul>');
+              var $userTweets = $(this).closest('div').find('.user-tweets');
+              $userTweets.text('');
               var i;
               for (i = 0; i < streams.users[tweet.user].length; i++) {
                 var $userTweet = $('<li></li>');
                 $userTweet.text(streams.users[tweet.user][i].message);
                 $userTweets.prepend($userTweet);
               }
-              $entry.append($userTweets);
+              $userTweets.show();
             });
           }
         }
