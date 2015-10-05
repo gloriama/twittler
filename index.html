@@ -11,6 +11,14 @@
         var $body = $('body');
         $body.html('');
 
+        //allow user to get new tweets
+        var $update = $('<button>Get new tweets</button>');
+        $update.on('click', function() {
+          alert('Clicked!');
+        });
+        $update.appendTo($body);
+        
+        //show tweets in reverse chron order
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
