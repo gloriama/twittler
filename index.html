@@ -20,13 +20,12 @@
         
         //show tweets in reverse chron order
         var $tweets = $('<section></section>');
-        var index = streams.home.length - 1;
-        while(index >= 0){
+        var index;
+        for (index = 0; index < streams.home.length; index++) {
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($tweets);
-          index -= 1;
+          $tweet.prependTo($tweets);
         }
         $tweets.appendTo($body);
 
