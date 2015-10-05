@@ -26,6 +26,18 @@
             $entry.append(': ');
             $entry.append($tweet);
             $tweets.prepend($entry);
+            
+            $user.on('click', function(event) {
+              event.preventDefault();
+              $userTweets = $('<ul></ul>');
+              var i;
+              for (i = 0; i < streams.users[tweet.user].length; i++) {
+                var $userTweet = $('<li></li>');
+                $userTweet.text(streams.users[tweet.user][i].message);
+                $userTweets.prepend($userTweet);
+              }
+              $entry.append($userTweets);
+            });
           }
         }
         
