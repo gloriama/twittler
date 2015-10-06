@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="style.css">
     <script src="jquery.js"></script>
     <script src="date_format.js"></script>
     <script src="data_generator.js"></script>
@@ -47,15 +48,20 @@
           }
         }
         
+        var $container = $('<section></section>',
+                           {"class": "container"});
+        
         //allow user to get new tweets
         var $update = $('<button>Get new tweets</button>');
         $update.on('click', showTweets);
-        $update.appendTo($body);
+        $update.appendTo($container);
         
         //show tweets
         var $tweets = $('<section></section>');
-        $tweets.appendTo($body);
+        $tweets.appendTo($container);
         showTweets();
+        
+        $container.appendTo($body);
 
       });
 
