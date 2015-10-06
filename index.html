@@ -24,7 +24,8 @@
             $user.text('@' + tweet.user);
             var $tweet = $('<span></span>');
             $tweet.text(tweet.message + ' (' + tweet.created_at.format("mmm d yyyy, h:MM TT") + ')');
-            var $entry = $('<div></div>');
+            var $entry = $('<div></div>',
+                           {"class": "entry"});
             var $userTweets = $('<ul></ul>',
                                 {"class": "user-tweets"});
             $userTweets.hide();

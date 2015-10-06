@@ -56,15 +56,15 @@ body {
   font: 14px/22px Helvetica, Arial, sans-serif;
   background: #69c3db; /* twitter blue */
 }
-div {
-  margin-left: 10px;
-}
 .container {
   background: #fff;
   border-radius: 5px;
   margin: 30px;
-  padding: 10px;
   width: 900px;
+}
+.entry {
+  padding: 15px 10px;
+  border-top: 2px solid #f4f4f4;
 }
 
 /*
