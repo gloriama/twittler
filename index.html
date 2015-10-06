@@ -19,7 +19,8 @@
           for (index = 0; index < streams.home.length; index++) {
             var tweet = streams.home[index];
             var $user = $('<a></a>',
-                          {"href": "#"});
+                          {"href": "#",
+                           "data-user": tweet.user});
             $user.text('@' + tweet.user);
             var $tweet = $('<span></span>');
             $tweet.text(tweet.message + ' (' + tweet.created_at.format("mmm d yyyy, h:MM TT") + ')');
@@ -36,11 +37,12 @@
             $user.on('click', function(event) {
               event.preventDefault();
               var $userTweets = $(this).closest('div').find('.user-tweets');
+              var user = $(this).data('user');
               $userTweets.text('');
               var i;
-              for (i = 0; i < streams.users[tweet.user].length; i++) {
+              for (i = 0; i < streams.users[user].length; i++) {
                 var $userTweet = $('<li></li>');
-                $userTweet.text(streams.users[tweet.user][i].message);
+                $userTweet.text(streams.users[user][i].message);
                 $userTweets.prepend($userTweet);
               }
               $userTweets.show();
